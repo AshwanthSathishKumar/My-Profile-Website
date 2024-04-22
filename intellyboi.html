@@ -1,0 +1,3766 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="icon" href="images/circuit-board.png"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Intellyboi</title>
+
+  <!--
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
+
+ 
+
+  <!--
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    
+
+:root {
+
+/**
+ * colors
+ */
+
+/* gradient */
+
+--bg-gradient-onyx: linear-gradient(
+  to bottom right, 
+  hsl(240, 1%, 25%) 3%, 
+  hsl(0, 0%, 19%) 97%
+);
+--bg-gradient-jet: linear-gradient(
+  to bottom right, 
+  hsla(240, 1%, 18%, 0.251) 0%, 
+  hsla(240, 2%, 11%, 0) 100%
+), hsl(240, 2%, 13%);
+--bg-gradient-yellow-1: linear-gradient(
+  to bottom right, 
+  hsl(45, 100%, 71%) 0%, 
+  hsla(36, 100%, 69%, 0) 50%
+);
+--bg-gradient-yellow-2: linear-gradient(
+  135deg, 
+  hsla(45, 100%, 71%, 0.251) 0%, 
+  hsla(35, 100%, 68%, 0) 59.86%
+), hsl(240, 2%, 13%);
+--border-gradient-onyx: linear-gradient(
+  to bottom right, 
+  hsl(0, 0%, 25%) 0%, 
+  hsla(0, 0%, 25%, 0) 50%
+);
+--text-gradient-yellow: linear-gradient(
+  to right, 
+  hsl(45, 100%, 72%), 
+  hsl(35, 100%, 68%)
+);
+
+/* solid */
+
+--jet: hsl(0, 0%, 22%);
+--onyx: hsl(240, 1%, 17%);
+--eerie-black-1: hsl(240, 2%, 13%);
+--eerie-black-2: hsl(240, 2%, 12%);
+--smoky-black: hsl(0, 0%, 7%);
+--white-1: hsl(0, 0%, 100%);
+--white-2: hsl(0, 0%, 98%);
+--orange-yellow-crayola: hsl(45, 100%, 72%);
+--vegas-gold: hsl(45, 54%, 58%);
+--light-gray: hsl(0, 0%, 84%);
+--light-gray-70: hsla(0, 0%, 84%, 0.7);
+--bittersweet-shimmer: hsl(0, 43%, 51%);
+
+/**
+ * typography
+ */
+
+/* font-family */
+--ff-poppins: 'Poppins', sans-serif;
+
+/* font-size */
+--fs-1: 24px;
+--fs-2: 18px;
+--fs-3: 17px;
+--fs-4: 16px;
+--fs-5: 15px;
+--fs-6: 14px;
+--fs-7: 13px;
+--fs-8: 11px;
+
+/* font-weight */
+--fw-300: 300;
+--fw-400: 400;
+--fw-500: 500;
+--fw-600: 600;
+
+/**
+ * shadow
+ */
+
+--shadow-1: -4px 8px 24px hsla(0, 0%, 0%, 0.25);
+--shadow-2: 0 16px 30px hsla(0, 0%, 0%, 0.25);
+--shadow-3: 0 16px 40px hsla(0, 0%, 0%, 0.25);
+--shadow-4: 0 25px 50px hsla(0, 0%, 0%, 0.15);
+--shadow-5: 0 24px 80px hsla(0, 0%, 0%, 0.25);
+
+/**
+ * transition
+ */
+
+--transition-1: 0.25s ease;
+--transition-2: 0.5s ease-in-out;
+
+}
+
+
+
+
+
+/*-----------------------------------*\
+#RESET
+\*-----------------------------------*/
+
+*, *::before, *::after {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+a { text-decoration: none; }
+
+li { list-style: none; }
+
+img, ion-icon, a, button, time, span { display: block; }
+
+button {
+font: inherit;
+background: none;
+border: none;
+text-align: left;
+cursor: pointer;
+}
+
+input, textarea {
+display: block;
+width: 100%;
+background: none;
+font: inherit;
+}
+
+::selection {
+background: var(--orange-yellow-crayola);
+color: var(--smoky-black);
+}
+
+:focus { outline-color: var(--orange-yellow-crayola); }
+
+html { font-family: var(--ff-poppins); }
+
+body { background: var(--smoky-black); }
+
+
+
+
+
+/*-----------------------------------*\
+#REUSED STYLE
+\*-----------------------------------*/
+
+.sidebar,
+article {
+background: var(--eerie-black-2);
+border: 1px solid var(--jet);
+border-radius: 20px;
+padding: 15px;
+box-shadow: var(--shadow-1);
+z-index: 1;
+}
+
+.separator {
+width: 100%;
+height: 1px;
+background: var(--jet);
+margin: 16px 0;
+}
+
+.icon-box {
+position: relative;
+background: var(--border-gradient-onyx);
+width: 30px;
+height: 30px;
+border-radius: 8px;
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 16px;
+color: var(--orange-yellow-crayola);
+box-shadow: var(--shadow-1);
+z-index: 1;
+}
+
+.icon-box::before {
+content: "";
+position: absolute;
+inset: 1px;
+background: var(--eerie-black-1);
+border-radius: inherit;
+z-index: -1;
+}
+
+.icon-box ion-icon { --ionicon-stroke-width: 35px; }
+
+article { display: none; }
+
+article.active {
+display: block;
+animation: fade 0.5s ease backwards;
+}
+
+@keyframes fade {
+0% { opacity: 0; }
+100% { opacity: 1; }
+}
+
+.h2,
+.h3,
+.h4,
+.h5 {
+color: var(--white-2);
+text-transform: capitalize;
+}
+
+.h2 { font-size: var(--fs-1); }
+
+.h3 { font-size: var(--fs-2); }
+
+.h4 { font-size: var(--fs-4); }
+
+.h5 {
+font-size: var(--fs-7);
+font-weight: var(--fw-500);
+}
+
+.article-title {
+position: relative;
+padding-bottom: 7px;
+}
+
+.article-title::after {
+content: "";
+position: absolute;
+bottom: 0;
+left: 0;
+width: 30px;
+height: 3px;
+background: var(--text-gradient-yellow);
+border-radius: 3px;
+}
+
+.has-scrollbar::-webkit-scrollbar {
+width: 5px; /* for vertical scrollbar */
+height: 5px; /* for horizontal scrollbar */
+}
+
+.has-scrollbar::-webkit-scrollbar-track {
+background: var(--onyx);
+border-radius: 5px;
+}
+
+.has-scrollbar::-webkit-scrollbar-thumb {
+background: var(--orange-yellow-crayola);
+border-radius: 5px;
+}
+
+.has-scrollbar::-webkit-scrollbar-button { width: 20px; }
+
+.content-card {
+position: relative;
+background: var(--border-gradient-onyx);
+padding: 15px;
+padding-top: 45px;
+border-radius: 14px;
+box-shadow: var(--shadow-2);
+cursor: pointer;
+z-index: 1;
+}
+
+.content-card::before {
+content: "";
+position: absolute;
+inset: 1px;
+background: var(--bg-gradient-jet);
+border-radius: inherit;
+z-index: -1;
+}
+
+
+
+
+
+/*-----------------------------------*\
+#MAIN
+\*-----------------------------------*/
+
+main {
+margin: 15px 12px;
+margin-bottom: 75px;
+min-width: 259px;
+}
+
+
+
+
+
+/*-----------------------------------*\
+#SIDEBAR
+\*-----------------------------------*/
+
+.sidebar {
+margin-bottom: 15px;
+max-height: 112px;
+overflow: hidden;
+transition: var(--transition-2);
+}
+
+.sidebar.active { max-height: 405px; }
+
+.sidebar-info {
+position: relative;
+display: flex;
+justify-content: flex-start;
+align-items: center;
+gap: 15px;
+}
+
+.avatar-box {
+background: var(--bg-gradient-onyx);
+border-radius: 20px;
+}
+
+.info-content .name {
+color: var(--white-2);
+font-size: var(--fs-3);
+font-weight: var(--fw-500);
+letter-spacing: -0.25px;
+margin-bottom: 10px;
+}
+
+.info-content .title {
+color: var(--white-1);
+background: var(--onyx);
+font-size: var(--fs-8);
+font-weight: var(--fw-300);
+width: max-content;
+padding: 3px 12px;
+border-radius: 8px;
+}
+
+.info_more-btn {
+position: absolute;
+top: -15px;
+right: -15px;
+border-radius: 0 15px;
+font-size: 13px;
+color: var(--orange-yellow-crayola);
+background: var(--border-gradient-onyx);
+padding: 10px;
+box-shadow: var(--shadow-2);
+transition: var(--transition-1);
+z-index: 1;
+}
+
+.info_more-btn::before {
+content: "";
+position: absolute;
+inset: 1px;
+border-radius: inherit;
+background: var(--bg-gradient-jet);
+transition: var(--transition-1);
+z-index: -1;
+}
+
+.info_more-btn:hover,
+.info_more-btn:focus { background: var(--bg-gradient-yellow-1); }
+
+.info_more-btn:hover::before,
+.info_more-btn:focus::before { background: var(--bg-gradient-yellow-2); }
+
+.info_more-btn span { display: none; }
+
+.sidebar-info_more {
+opacity: 0;
+visibility: hidden;
+transition: var(--transition-2);
+}
+
+.sidebar.active .sidebar-info_more {
+opacity: 1;
+visibility: visible;
+}
+
+.contacts-list {
+display: grid;
+grid-template-columns: 1fr;
+gap: 16px;
+}
+
+.contact-item {
+min-width: 100%;
+display: flex;
+align-items: center;
+gap: 16px;
+}
+
+.contact-info {
+max-width: calc(100% - 46px);
+width: calc(100% - 46px);
+}
+
+.contact-title {
+color: var(--light-gray-70);
+font-size: var(--fs-8);
+text-transform: uppercase;
+margin-bottom: 2px;
+}
+
+.contact-info :is(.contact-link, time, address) {
+color: var(--white-2);
+font-size: var(--fs-7);
+}
+
+.contact-info address { font-style: normal; }
+
+.social-list {
+display: flex;
+justify-content: flex-start;
+align-items: center;
+gap: 15px;
+padding-bottom: 4px;
+padding-left: 7px;
+}
+
+.social-item .social-link {
+color: var(--light-gray-70);
+font-size: 18px;
+}
+
+
+.social-item .social-link:hover { color: var(--light-gray); }
+
+
+
+
+
+/*-----------------------------------*\
+#NAVBAR
+\*-----------------------------------*/
+
+.navbar {
+position: fixed;
+bottom: 0;
+left: 0;
+width: 100%;
+background: hsla(240, 1%, 17%, 0.75);
+backdrop-filter: blur(10px);
+border: 1px solid var(--jet);
+border-radius: 12px 12px 0 0;
+box-shadow: var(--shadow-2);
+z-index: 5;
+}
+
+.navbar-list {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
+padding: 0 10px;
+}
+
+.navbar-link {
+color: var(--light-gray);
+font-size: var(--fs-8);
+padding: 20px 7px;
+transition: color var(--transition-1);
+}
+
+.navbar-link:hover,
+.navbar-link:focus { color: var(--light-gray-70); }
+
+.navbar-link.active { color: var(--orange-yellow-crayola); }
+
+
+
+
+
+/*-----------------------------------*\
+#ABOUT
+\*-----------------------------------*/
+
+.about .article-title { margin-bottom: 15px; }
+
+.about-text {
+color: var(--light-gray);
+font-size: var(--fs-6);
+font-weight: var(--fw-300);
+line-height: 1.6;
+}
+
+.about-text p { margin-bottom: 15px; }
+
+
+
+/**
+* #service 
+*/
+
+.service { margin-bottom: 35px; }
+
+.service-title { margin-bottom: 20px; }
+
+.service-list {
+display: grid;
+grid-template-columns: 1fr;
+gap: 20px;
+}
+
+.service-item {
+position: relative;
+background: var(--border-gradient-onyx);
+padding: 20px;
+border-radius: 14px;
+box-shadow: var(--shadow-2);
+z-index: 1;
+}
+
+.service-item::before {
+content: "";
+position: absolute;
+inset: 1px;
+background: var(--bg-gradient-jet);
+border-radius: inherit;
+z-index: -1;
+}
+
+.service-icon-box { margin-bottom: 10px; }
+
+.service-icon-box img { margin: auto; }
+
+.service-content-box { text-align: center; }
+
+.service-item-title { margin-bottom: 7px; }
+
+.service-item-text {
+color: var(--light-gray);
+font-size: var(--fs-6);
+font-weight: var(--fw-3);
+line-height: 1.6;
+}
+
+
+/**
+* #testimonials 
+*/
+
+.testimonials { margin-bottom: 30px; }
+
+.testimonials-title { margin-bottom: 20px; }
+
+.testimonials-list {
+display: flex;
+justify-content: flex-start;
+align-items: flex-start;
+gap: 15px;
+margin: 0 -15px;
+padding: 25px 15px;
+padding-bottom: 35px;
+overflow-x: auto;
+scroll-behavior: smooth;
+overscroll-behavior-inline: contain;
+scroll-snap-type: inline mandatory;
+}
+
+.testimonials-item {
+min-width: 100%;
+scroll-snap-align: center;
+}
+
+.testimonials-avatar-box {
+position: absolute;
+top: 0;
+left: 0;
+transform: translate(15px, -25px);
+background: var(--bg-gradient-onyx);
+border-radius: 14px;
+box-shadow: var(--shadow-1);
+}
+
+.testimonials-item-title { margin-bottom: 7px; }
+
+.testimonials-text {
+color: var(--light-gray);
+font-size: var(--fs-6);
+font-weight: var(--fw-300);
+line-height: 1.6;
+display: -webkit-box;
+line-clamp: 4;
+-webkit-line-clamp: 4;
+-webkit-box-orient: vertical;
+overflow: hidden;
+}
+
+
+/**
+* #testimonials-modal
+*/
+
+.modal-container {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+overflow-y: auto;
+overscroll-behavior: contain;
+z-index: 20;
+pointer-events: none;
+visibility: hidden;
+}
+
+.modal-container::-webkit-scrollbar { display: none; }
+
+.modal-container.active {
+pointer-events: all;
+visibility: visible;
+}
+
+.overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100vh;
+background: hsl(0, 0%, 5%);
+opacity: 0;
+visibility: hidden;
+pointer-events: none;
+z-index: 1;
+transition: var(--transition-1);
+}
+
+.overlay.active {
+opacity: 0.8;
+visibility: visible;
+pointer-events: all;
+}
+
+.testimonials-modal {
+background: var(--eerie-black-2);
+position: relative;
+padding: 15px;
+margin: 15px 12px;
+border: 1px solid var(--jet);
+border-radius: 14px;
+box-shadow: var(--shadow-5);
+transform: scale(1.2);
+opacity: 0;
+transition: var(--transition-1);
+z-index: 2;
+}
+
+.modal-container.active .testimonials-modal {
+transform: scale(1);
+opacity: 1;
+}
+
+.modal-close-btn {
+position: absolute;
+top: 15px;
+right: 15px;
+background: var(--onyx);
+border-radius: 8px;
+width: 32px;
+height: 32px;
+display: flex;
+justify-content: center;
+align-items: center;
+color: var(--white-2);
+font-size: 18px;
+opacity: 0.7;
+}
+
+.modal-close-btn:hover,
+.modal-close-btn:focus { opacity: 1; }
+
+.modal-close-btn ion-icon { --ionicon-stroke-width: 50px; }
+
+.modal-avatar-box {
+background: var(--bg-gradient-onyx);
+width: max-content;
+border-radius: 14px;
+margin-bottom: 15px;
+box-shadow: var(--shadow-2);
+}
+
+.modal-img-wrapper > img { display: none; }
+
+.modal-title { margin-bottom: 4px; }
+
+.modal-content time {
+font-size: var(--fs-6);
+color: var(--light-gray-70);
+font-weight: var(--fw-300);
+margin-bottom: 10px;
+}
+
+.modal-content p {
+color: var(--light-gray);
+font-size: var(--fs-6);
+font-weight: var(--fw-300);
+line-height: 1.6;
+}
+
+
+/**
+* #clients 
+*/
+
+.clients { margin-bottom: 15px; }
+
+.clients-list {
+display: flex;
+justify-content: flex-start;
+align-items: flex-start;
+gap: 15px;
+margin: 0 -15px;
+padding: 25px;
+padding-bottom: 25px;
+overflow-x: auto;
+scroll-behavior: smooth;
+overscroll-behavior-inline: contain;
+scroll-snap-type: inline mandatory;
+scroll-padding-inline: 25px;
+}
+
+.clients-item {
+min-width: 50%;
+scroll-snap-align: start;
+}
+
+.clients-item img {
+width: 100%;
+filter: grayscale(1);
+transition: var(--transition-1);
+}
+
+.clients-item img:hover { filter: grayscale(0); }
+
+
+
+
+
+/*-----------------------------------*\
+#RESUME
+\*-----------------------------------*/
+
+.article-title { margin-bottom: 30px; }
+
+
+/**
+* education and experience 
+*/
+
+.timeline { margin-bottom: 30px; }
+
+.timeline .title-wrapper {
+display: flex;
+align-items: center;
+gap: 15px;
+margin-bottom: 25px;
+}
+
+.timeline-list {
+font-size: var(--fs-6);
+margin-left: 45px;
+}
+
+.timeline-item { position: relative; }
+
+.timeline-item:not(:last-child) { margin-bottom: 20px; }
+
+.timeline-item-title {
+font-size: var(--fs-6);
+line-height: 1.3;
+margin-bottom: 7px;
+}
+
+.timeline-list span {
+color: var(--vegas-gold);
+font-weight: var(--fw-400);
+line-height: 1.6;
+}
+
+.timeline-item:not(:last-child)::before {
+content: "";
+position: absolute;
+top: -25px;
+left: -30px;
+width: 1px;
+height: calc(100% + 50px);
+background: var(--jet);
+}
+
+.timeline-item::after {
+content: "";
+position: absolute;
+top: 5px;
+left: -33px;
+height: 6px;
+width: 6px;
+background: var(--text-gradient-yellow);
+border-radius: 50%;
+box-shadow: 0 0 0 4px var(--jet);
+}
+
+.timeline-text {
+color: var(--light-gray);
+font-weight: var(--fw-300);
+line-height: 1.6;
+}
+
+
+/**
+* skills 
+*/
+
+.skills-title { margin-bottom: 20px; }
+
+.skills-list { padding: 20px; }
+
+
+.skills-item:not(:last-child) { margin-bottom: 15px; }
+
+.skill .title-wrapper {
+display: flex;
+align-items: center;
+gap: 5px;
+margin-bottom: 8px;
+}
+
+.skill .title-wrapper data {
+color: var(--light-gray);
+font-size: var(--fs-7);
+font-weight: var(--fw-300);
+}
+
+.skill-progress-bg {
+background: var(--jet);
+width: 100%;
+height: 8px;
+border-radius: 10px;
+}
+
+.skill-progress-fill {
+background: var(--text-gradient-yellow);
+height: 100%;
+border-radius: inherit;
+}
+
+
+
+
+
+/*-----------------------------------*\
+#PORTFOLIO
+\*-----------------------------------*/
+
+.filter-list { display: none; }
+
+.filter-select-box {
+position: relative;
+margin-bottom: 25px;
+}
+
+.filter-select {
+background: var(--eerie-black-2);
+color: var(--light-gray);
+display: flex;
+justify-content: space-between;
+align-items: center;
+width: 100%;
+padding: 12px 16px;
+border: 1px solid var(--jet);
+border-radius: 14px;
+font-size: var(--fs-6);
+font-weight: var(--fw-300);
+}
+
+.filter-select.active .select-icon { transform: rotate(0.5turn); }
+
+.select-list {
+background: var(--eerie-black-2);
+position: absolute;
+top: calc(100% + 6px);
+width: 100%;
+padding: 6px;
+border: 1px solid var(--jet);
+border-radius: 14px;
+z-index: 2;
+opacity: 0;
+visibility: hidden;
+pointer-events: none;
+transition: 0.15s ease-in-out;
+}
+
+.filter-select.active + .select-list {
+opacity: 1;
+visibility: visible;
+pointer-events: all;
+}
+
+.select-item button {
+background: var(--eerie-black-2);
+color: var(--light-gray);
+font-size: var(--fs-6);
+font-weight: var(--fw-300);
+text-transform: capitalize;
+width: 100%;
+padding: 8px 10px;
+border-radius: 8px;
+}
+
+.select-item button:hover { --eerie-black-2: hsl(240, 2%, 20%); }
+
+.project-list {
+display: grid;
+grid-template-columns: 1fr;
+gap: 30px;
+margin-bottom: 10px;
+}
+
+.project-item { display: none; }
+
+.project-item.active {
+display: block;
+animation: scaleUp 0.25s ease forwards;
+}
+
+@keyframes scaleUp {
+0% { transform: scale(0.5); }
+100% { transform: scale(1); }
+}
+
+.project-item > a { width: 100%; }
+
+.project-img {
+position: relative;
+width: 100%;
+height: 200px;
+border-radius: 16px;
+overflow: hidden;
+margin-bottom: 15px;
+}
+
+.project-img::before {
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: transparent;
+z-index: 1;
+transition: var(--transition-1);
+}
+
+.project-item > a:hover .project-img::before { background: hsla(0, 0%, 0%, 0.5); }
+
+.project-item-icon-box {
+--scale: 0.8;
+
+background: var(--jet);
+color: var(--orange-yellow-crayola);
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%) scale(var(--scale));
+font-size: 20px;
+padding: 18px;
+border-radius: 12px;
+opacity: 0;
+z-index: 1;
+transition: var(--transition-1);
+}
+
+.project-item > a:hover .project-item-icon-box {
+--scale: 1;
+opacity: 1;
+}
+
+.project-item-icon-box ion-icon { --ionicon-stroke-width: 50px; }
+
+.project-img img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+transition: var(--transition-1);
+}
+
+.project-item > a:hover img { transform: scale(1.1); }
+
+.project-title,
+.project-category { margin-left: 10px; }
+
+.project-title {
+color: var(--white-2);
+font-size: var(--fs-5);
+font-weight: var(--fw-400);
+text-transform: capitalize;
+line-height: 1.3;
+}
+
+.project-category {
+color: var(--light-gray-70);
+font-size: var(--fs-6);
+font-weight: var(--fw-300);
+}
+
+
+
+
+
+/*-----------------------------------*\
+#BLOG
+\*-----------------------------------*/
+
+.blog-posts { margin-bottom: 10px; }
+
+.blog-posts-list {
+display: grid;
+grid-template-columns: 1fr;
+gap: 20px;
+}
+
+.blog-post-item > a {
+position: relative;
+background: var(--border-gradient-onyx);
+height: 100%;
+box-shadow: var(--shadow-4);
+border-radius: 16px;
+z-index: 1;
+}
+
+.blog-post-item > a::before {
+content: "";
+position: absolute;
+inset: 1px;
+border-radius: inherit;
+background: var(--eerie-black-1);
+z-index: -1;
+}
+
+.blog-banner-box {
+width: 100%;
+height: 200px;
+border-radius: 12px;
+overflow: hidden;
+}
+
+.blog-banner-box img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+transition: var(--transition-1);
+}
+
+.blog-post-item > a:hover .blog-banner-box img { transform: scale(1.1); }
+
+.blog-content { padding: 15px; }
+
+.blog-meta {
+display: flex;
+justify-content: flex-start;
+align-items: center;
+gap: 7px;
+margin-bottom: 10px;
+}
+
+.blog-meta :is(.blog-category, time) {
+color: var(--light-gray-70);
+font-size: var(--fs-6);
+font-weight: var(--fw-300);
+}
+
+.blog-meta .dot {
+background: var(--light-gray-70);
+width: 4px;
+height: 4px;
+border-radius: 4px;
+}
+
+.blog-item-title {
+margin-bottom: 10px;
+line-height: 1.3;
+transition: var(--transition-1);
+}
+
+.blog-post-item > a:hover .blog-item-title { color: var(--orange-yellow-crayola); }
+
+.blog-text {
+color: var(--light-gray);
+font-size: var(--fs-6);
+font-weight: var(--fw-300);
+line-height: 1.6;
+}
+
+
+
+
+
+/*-----------------------------------*\
+#CONTACT
+\*-----------------------------------*/
+
+.mapbox {
+position: relative;
+height: 250px;
+width: 100%;
+border-radius: 16px;
+margin-bottom: 30px;
+border: 1px solid var(--jet);
+overflow: hidden;
+}
+
+.mapbox figure { height: 100%; }
+
+.mapbox iframe {
+width: 100%;
+height: 100%;
+border: none;
+filter: grayscale(1) invert(1);
+}
+
+.contact-form { margin-bottom: 10px; }
+
+.form-title { margin-bottom: 20px; }
+
+.input-wrapper {
+display: grid;
+grid-template-columns: 1fr;
+gap: 25px;
+margin-bottom: 25px;
+}
+
+.form-input {
+color: var(--white-2);
+font-size: var(--fs-6);
+font-weight: var(--fw-400);
+padding: 13px 20px;
+border: 1px solid var(--jet);
+border-radius: 14px;
+outline: none;
+}
+
+.form-input::placeholder { font-weight: var(--fw-500); }
+
+.form-input:focus { border-color: var(--orange-yellow-crayola); }
+
+textarea.form-input {
+min-height: 100px;
+height: 120px;
+max-height: 200px;
+resize: vertical;
+margin-bottom: 25px;
+}
+
+textarea.form-input::-webkit-resizer { display: none; }
+
+.form-input:focus:invalid { border-color: var(--bittersweet-shimmer); }
+
+.form-btn {
+position: relative;
+width: 100%;
+background: var(--border-gradient-onyx);
+color: var(--orange-yellow-crayola);
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 10px;
+padding: 13px 20px;
+border-radius: 14px;
+font-size: var(--fs-6);
+text-transform: capitalize;
+box-shadow: var(--shadow-3);
+z-index: 1;
+transition: var(--transition-1);
+}
+
+.form-btn::before {
+content: "";
+position: absolute;
+inset: 1px;
+background: var(--bg-gradient-jet);
+border-radius: inherit;
+z-index: -1;
+transition: var(--transition-1);
+}
+
+.form-btn ion-icon { font-size: 16px; }
+
+.form-btn:hover { background: var(--bg-gradient-yellow-1); }
+
+.form-btn:hover::before { background: var(--bg-gradient-yellow-2); }
+
+.form-btn:disabled {
+opacity: 0.7;
+cursor: not-allowed;
+}
+
+.form-btn:disabled:hover { background: var(--border-gradient-onyx); }
+
+.form-btn:disabled:hover::before { background: var(--bg-gradient-jet); }
+
+
+
+
+
+/*-----------------------------------*\
+#RESPONSIVE
+\*-----------------------------------*/
+
+/**
+* responsive larger than 450px screen
+*/
+
+@media (min-width: 450px) {
+
+/**
+ * client
+ */
+
+.clients-item { min-width: calc(33.33% - 10px); }
+
+
+
+
+.project-img,
+.blog-banner-box { height: auto; }
+
+}
+
+
+
+
+
+/**
+* responsive larger than 580px screen
+*/
+
+@media (min-width: 580px) {
+
+/**
+ * CUSTOM PROPERTY
+ */
+
+:root {
+
+  /**
+   * typography
+   */
+
+  --fs-1: 32px;
+  --fs-2: 24px;
+  --fs-3: 26px;
+  --fs-4: 18px;
+  --fs-6: 15px;
+  --fs-7: 15px;
+  --fs-8: 12px;
+
+}
+
+
+
+/**
+ * #REUSED STYLE
+ */
+
+.sidebar, article {
+  width: 520px;
+  margin-inline: auto;
+  padding: 30px;
+}
+
+.article-title {
+  font-weight: var(--fw-600);
+  padding-bottom: 15px;
+}
+
+.article-title::after {
+  width: 40px;
+  height: 5px;
+}
+
+.icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  font-size: 18px;
+}
+
+
+
+/**
+ * #MAIN
+ */
+
+main {
+  margin-top: 60px;
+  margin-bottom: 100px;
+}
+
+
+
+/**
+ * #SIDEBAR
+ */
+
+.sidebar {
+  max-height: 180px;
+  margin-bottom: 30px;
+}
+
+.sidebar.active { max-height: 584px; }
+
+.sidebar-info { gap: 25px; }
+
+.avatar-box { border-radius: 30px; }
+
+.avatar-box img { width: 120px; }
+
+.info-content .name { margin-bottom: 15px; }
+
+.info-content .title { padding: 5px 18px; }
+
+.info_more-btn {
+  top: -30px;
+  right: -30px;
+  padding: 10px 15px;
+}
+
+.info_more-btn span {
+  display: block;
+  font-size: var(--fs-8);
+}
+
+.info_more-btn ion-icon { display: none; }
+
+.separator { margin: 32px 0; }
+
+.contacts-list { gap: 20px; }
+
+.contact-info {
+  max-width: calc(100% - 64px);
+  width: calc(100% - 64px);
+}
+
+
+
+/**
+ * #NAVBAR
+ */
+
+.navbar { border-radius: 20px 20px 0 0; }
+
+.navbar-list { gap: 20px; }
+
+.navbar-link { --fs-8: 14px; }
+
+
+
+/**
+ * #ABOUT
+ */
+
+.about .article-title { margin-bottom: 20px; }
+
+.about-text { margin-bottom: 40px; }
+
+/* service */
+
+.service-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 30px;
+}
+
+.service-icon-box {
+  margin-bottom: 0;
+  margin-top: 5px;
+}
+
+.service-content-box { text-align: left; }
+
+/* testimonials */
+
+.testimonials-title { margin-bottom: 25px; }
+
+.testimonials-list {
+  gap: 30px;
+  margin: 0 -30px;
+  padding: 30px;
+  padding-bottom: 35px;
+}
+
+.content-card {
+  padding: 30px;
+  padding-top: 25px;
+}
+
+.testimonials-avatar-box {
+  transform: translate(30px, -30px);
+  border-radius: 20px;
+}
+
+.testimonials-avatar-box img { width: 80px; }
+
+.testimonials-item-title {
+  margin-bottom: 10px;
+  margin-left: 95px;
+}
+
+.testimonials-text {
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+}
+
+/* testimonials modal */
+
+.modal-container { padding: 20px; }
+
+.testimonials-modal {
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 25px;
+  padding: 30px;
+  border-radius: 20px;
+}
+
+.modal-img-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-avatar-box {
+  border-radius: 18px;
+  margin-bottom: 0;
+}
+
+.modal-avatar-box img { width: 65px; }
+
+.modal-img-wrapper > img {
+  display: block;
+  flex-grow: 1;
+  width: 35px;
+}
+
+/* clients */
+
+.clients-list {
+  gap: 50px;
+  margin: 0 -30px;
+  padding: 45px;
+  scroll-padding-inline: 45px;
+}
+
+.clients-item { min-width: calc(33.33% - 35px); }
+
+
+
+
+/**
+ * #RESUME
+ */
+
+.timeline-list { margin-left: 65px; }
+
+.timeline-item:not(:last-child)::before { left: -40px; }
+
+.timeline-item::after {
+  height: 8px;
+  width: 8px;
+  left: -43px;
+}
+
+.skills-item:not(:last-child) { margin-bottom: 25px; }
+
+
+
+/**
+ * #PORTFOLIO, BLOG
+ */
+
+.project-img, .blog-banner-box { border-radius: 16px; }
+
+.blog-posts-list { gap: 30px; }
+
+.blog-content { padding: 25px; }
+
+
+
+/**
+ * #CONTACT
+ */
+
+.mapbox {
+  height: 380px;
+  border-radius: 18px;
+}
+
+.input-wrapper {
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.Name { padding: 15px 20px; }
+.Mail { padding: 15px 20px; }
+
+textarea.Message { margin-bottom: 30px; }
+
+.form-btn {
+  --fs-6: 16px;
+  padding: 16px 20px;
+}
+
+.form-btn ion-icon { font-size: 18px; }
+
+}
+
+
+
+
+
+/**
+* responsive larger than 768px screen
+*/
+
+@media (min-width: 768px) {
+
+/**
+ * REUSED STYLE
+ */
+
+.sidebar, article { width: 700px; }
+
+.has-scrollbar::-webkit-scrollbar-button { width: 100px; }
+
+
+
+/**
+ * SIDEBAR
+ */
+
+.contacts-list {
+  grid-template-columns: 1fr 1fr;
+  gap: 30px 15px;
+}
+
+
+
+/**
+ * NAVBAR
+ */
+
+.navbar-link { --fs-8: 15px; }
+
+
+
+/**
+ * ABOUT
+ */
+
+/* testimonials modal */
+
+.testimonials-modal {
+  gap: 35px;
+  max-width: 680px;
+}
+
+.modal-avatar-box img { width: 80px; }
+
+
+
+/**
+ * PORTFOLIO
+ */
+
+.article-title { padding-bottom: 20px; }
+
+.filter-select-box { display: none; }
+
+.filter-list {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 25px;
+  padding-left: 5px;
+  margin-bottom: 30px;
+}
+
+.filter-item button {
+  color: var(--light-gray);
+  font-size: var(--fs-5);
+  transition: var(--transition-1);
+}
+
+.filter-item button:hover { color: var(--light-gray-70); }
+
+.filter-item button.active { color: var(--orange-yellow-crayola); }
+
+/* portfolio and blog grid */
+
+.project-list, .blog-posts-list { grid-template-columns: 1fr 1fr; }
+
+
+
+/**
+ * CONTACT
+ */
+
+.input-wrapper { grid-template-columns: 1fr 1fr; }
+
+.form-btn {
+  width: max-content;
+  margin-left: auto;
+}
+
+}
+
+
+
+
+
+/**
+* responsive larger than 1024px screen
+*/
+
+@media (min-width: 1024px) {
+
+/**
+ * CUSTOM PROPERTY
+ */
+
+:root {
+
+  /**
+  * shadow
+  */
+
+  --shadow-1: -4px 8px 24px hsla(0, 0%, 0%, 0.125);
+  --shadow-2: 0 16px 30px hsla(0, 0%, 0%, 0.125);
+  --shadow-3: 0 16px 40px hsla(0, 0%, 0%, 0.125);
+
+}
+
+
+
+/**
+ * REUSED STYLE
+ */
+
+.sidebar, article {
+  width: 950px;
+  box-shadow: var(--shadow-5);
+}
+
+
+
+/**
+ * MAIN 
+ */
+
+main { margin-bottom: 60px; }
+
+.main-content {
+  position: relative;
+  width: max-content;
+  margin: auto;
+}
+
+
+
+/**
+ * NAVBAR
+ */
+
+.navbar {
+  position: absolute;
+  bottom: auto;
+  top: 0;
+  left: auto;
+  right: 0;
+  width: max-content;
+  border-radius: 0 20px;
+  padding: 0 20px;
+  box-shadow: none;
+}
+
+.navbar-list {
+  gap: 30px;
+  padding: 0 20px;
+}
+
+.navbar-link { font-weight: var(--fw-500); }
+
+
+
+/**
+ * ABOUT
+ */
+
+/* service */
+
+.service-list {
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 25px;
+}
+
+/* testimonials */
+
+.testimonials-item { min-width: calc(50% - 15px); }
+
+/* clients */
+
+.clients-item { min-width: calc(25% - 38px); }
+
+
+
+/**
+ * PORTFOLIO
+ */
+
+.project-list { grid-template-columns: repeat(3, 1fr); }
+
+
+
+/**
+ * BLOG
+ */
+
+.blog-banner-box { height: 230px; }
+
+}
+
+
+
+
+
+/**
+* responsive larger than 1250px screen
+*/
+
+@media (min-width: 1250px) {
+
+/**
+ * RESET
+ */
+
+body::-webkit-scrollbar { width: 20px; }
+
+body::-webkit-scrollbar-track { background: var(--smoky-black); }
+
+body::-webkit-scrollbar-thumb {
+  border: 5px solid var(--smoky-black);
+  background: hsla(0, 0%, 100%, 0.1);
+  border-radius: 20px;
+  box-shadow: inset 1px 1px 0 hsla(0, 0%, 100%, 0.11),
+              inset -1px -1px 0 hsla(0, 0%, 100%, 0.11);
+}
+
+body::-webkit-scrollbar-thumb:hover { background: hsla(0, 0%, 100%, 0.15); }
+
+body::-webkit-scrollbar-button { height: 60px; }
+
+
+
+/**
+ * REUSED STYLE
+ */
+
+.sidebar, article { width: auto; }
+
+article { min-height: 100%; }
+
+
+
+/**
+ * MAIN
+ */
+
+main {
+  max-width: 1200px;
+  margin-inline: auto;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 25px;
+}
+
+.main-content {
+  min-width: 75%;
+  width: 75%;
+  margin: 0;
+}
+
+
+
+/**
+ * SIDEBAR
+ */
+
+.sidebar {
+  position: sticky;
+  top: 60px;
+  max-height: max-content;
+  height: 100%;
+  margin-bottom: 0;
+  padding-top: 60px;
+  z-index: 1;
+}
+
+.sidebar-info { flex-direction: column; }
+
+.avatar-box img { width: 150px; }
+
+.info-content .name {
+  white-space: nowrap;
+  text-align: center;
+}
+
+.info-content .title { margin: auto; }
+
+.info_more-btn { display: none; }
+
+.sidebar-info_more {
+  opacity: 1;
+  visibility: visible;
+}
+
+.contacts-list { grid-template-columns: 1fr; }
+
+.contact-info :is(.contact-link) {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.contact-info :is(.contact-link, time, address) {
+  --fs-7: 14px;
+  font-weight: var(--fw-300);
+}
+
+.separator:last-of-type {
+  margin: 15px 0;
+  opacity: 0;
+}
+
+.social-list { justify-content: center; }
+
+
+
+/**
+   * RESUME
+   */
+
+.timeline-text { max-width: 700px; }
+
+}
+#html-code,#js-code,#css-code,#output{
+  color:white;
+  border-radius:5px;
+  min-width:100px;
+  max-width:200px;
+  min-height:200px;
+  max-height:400px;
+  border-width:2px;
+  resize: none;
+  font-size: small;
+  border-color:var(--orange-yellow-crayola) ;
+}
+#html-code::placeholder,#js-code::placeholder,#css-code::placeholder{
+  color:white;
+  padding-left:0.5rem;
+  padding-top:0.5rem;
+  font-size: small;
+}
+#codepen{
+  color:var(--orange-yellow-crayola) ;
+  font-weight:600;
+  display:flex;
+  padding-right:0.5rem;
+}
+#codepen_icon{
+  height:20px;
+  width:20px;
+  filter:opacity(1);
+}
+.btn{
+  cursor: pointer;
+  outline: 0;
+  color: #AAA;
+  display:flex;
+  padding-right:10%;
+
+}
+.button_row{
+  display:flex;
+  flex-direction: row;
+  margin-left: 75%;
+}
+#likeBtn,#dislikeBtn,#likeBtn1,#dislikeBtn1,#likeBtn2,#dislikeBtn2,#likeBtn3,#dislikeBtn3,#likeBtn4,#dislikeBtn4,#likeBtn5,#dislikeBtn5,#likeBtn6,#dislikeBtn6,#likeBtn7,#dislikeBtn7{
+  display:flex;
+  flex-direction: row;
+  padding-right:10%;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+#green{
+  color: rgb(111, 171, 111);
+}
+
+#red{
+  color: rgb(255, 123, 123);
+}
+#likeCount,#dislikeCount,#likeCount1,#dislikeCount1,#likeCount2,#dislikeCount2,#likeCount3,#dislikeCount3,#likeCount4,#dislikeCount4,#likeCount5,#dislikeCount5,#likeCount6,#dislikeCount6,#likeCount7,#dislikeCount7{
+font-family: var(--ff-poppins);
+font-size:x-small;
+}
+  </style>
+</head>
+
+<body>
+
+  <!--
+    - #MAIN
+  -->
+
+  <main>
+
+    <!--
+      - #SIDEBAR
+    -->
+
+    <aside class="sidebar" data-sidebar>
+
+      <div class="sidebar-info">
+
+        <figure class="avatar-box">
+          <img src="./images/my-avatar.jpeg" style="border-radius:2rem;" alt="Ashwanth S" width="80">
+        </figure>
+
+        <div class="info-content">
+          <h1 class="name" title="Ashwanth S">Ashwanth S</h1>
+
+          <p class="title">Student at MIT, India</p>
+        </div>
+
+        <button class="info_more-btn" data-sidebar-btn>
+          <span>Show Contacts</span>
+
+          <ion-icon name="chevron-down"></ion-icon>
+        </button>
+
+      </div>
+
+      <div class="sidebar-info_more">
+
+        <div class="separator"></div>
+
+        <ul class="contacts-list">
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Email</p>
+
+              <a href="mailto:ashwanthsathishkumar2604@gmail.com" class="contact-link">ashwanthsathishkumar2604@gmail.com</a>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="phone-portrait-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Phone</p>
+
+              <a href="#" class="contact-link">+91 73582 43533</a>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="calendar-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Birthday</p>
+
+              <time datetime="26-02-2004">Februrary 26, 2004</time>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Location</p>
+
+              <address>Chennai, Tamil Nadu, India</address>
+            </div>
+
+          </li>
+
+        </ul>
+
+        <div class="separator"></div>
+
+        <ul class="social-list">
+
+          <li class="social-item">
+            <a href="https://www.linkedin.com/in/ashwanth-s-522831255/" target="_blank" class="social-link">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://github.com/AshwanthSathishKumar"  target="_blank" class="social-link">
+              <ion-icon name="logo-github"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://www.instagram.com/intellyboi?igsh=enk5czR2cXgzbWxk&utm_source=qr"  target="_blank" class="social-link">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </aside>
+
+
+
+
+
+    <!--
+      - #main-content
+    -->
+
+    <div class="main-content">
+
+      <!--
+        - #NAVBAR
+      -->
+
+      <nav class="navbar">
+
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <button class="navbar-link  active" data-nav-link>About</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Resume</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Portfolio</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Blog</button>
+          </li>
+
+      <!--  <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Intellyboi AI</button>
+          </li>-->  
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Contact</button>
+          </li>
+          <li class="navbar-item">
+            <a href="intellyboi_login.html" id="myLink"><button class="navbar-link" data-nav-link>Login</button></a>
+          </li>
+
+        </ul>
+
+      </nav>
+
+
+
+
+
+      <!--
+        - #ABOUT
+      -->
+
+      <article class="about  active" data-page="about">
+
+        <header>
+          <h2 class="h2 article-title">About me</h2>
+        </header>
+
+        <section class="about-text">
+          <p>
+             Myself Ashwanth. S from Chennai, Tamil Nadu, India. Am having a great portion of my passion towards my field of education.
+             Continuous Learning has been my throttle to stay active and competitive in this fast ticking world.
+             Am highly receptive and communication/interaction is my cup of tea.
+          </p>
+
+          <p>
+            My job is to build your website so that it is functional and user-friendly but at the same time attractive.
+            Moreover, I
+            add personal touch to your product and make sure that is eye-catching and easy to use. My aim is to bring
+            across your
+            message and identity in the most creative way. Do not forget to check out my works.
+          </p>
+        </section>
+
+
+        <!--
+          - service
+        -->
+
+        <section class="service">
+
+          <h3 class="h3 service-title">What I do</h3>
+
+          <ul class="service-list">
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./images/icon-dev.svg"
+                 alt="design icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Embedded Systems</h4>
+
+                <p class="service-item-text">
+                 
+                  Designing efficient, real-time embedded systems solutions.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./images/icon-design.svg" alt="Web development icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Web development</h4>
+
+                <p class="service-item-text">
+                  High-quality development of sites at the professional level.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./images/icon-app.svg" alt="mobile app icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Mobile apps</h4>
+
+                <p class="service-item-text">
+                  Professional development of applications for iOS and Android.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./images/icon-dev.svg" alt="camera icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Machine Learning</h4>
+
+                <p class="service-item-text">
+                  Training algorithms to learn from data patterns.
+                </p>
+              </div>
+
+            </li>
+
+          </ul>
+
+        </section>
+
+
+        <!--
+          - testimonials
+        -->
+
+        <section class="testimonials">
+
+          <h3 class="h3 testimonials-title">Testimonials</h3>
+
+          <ul class="testimonials-list has-scrollbar">
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+                <figure class="testimonials-avatar-box">
+                  <img src="./images/avatar-1.png" alt="Sathish Kumar" width="40" data-testimonials-avatar>
+                </figure>
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Sathish Kumar <br>(CEO: A & A Millets)</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Their web app development expertise transformed our business, delivering a seamless user experience that exceeded our expectations
+                  </p>
+                </div>
+
+              </div>
+            </li>
+
+           <!-- <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+                <figure class="testimonials-avatar-box">
+                  <img src="./images/avatar-2.png" alt="Vijayalakshmi" width="60" data-testimonials-avatar>
+                </figure>
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Vijayalakshmi</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Incredible attention to detail and responsiveness throughout the development process, resulting in a polished and user-friendly web application.
+                  </p>
+                </div>
+
+              </div>
+            </li>-->
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+                <figure class="testimonials-avatar-box">
+                  <img src="./images/avatar-2.png" alt="Kanchan Saxena" width="40" data-testimonials-avatar>
+                </figure>
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Kanchan Saxena  <br>(CEO: Ampton Energy)</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    We express our sincere appreciation for the completion of the work to the satisfaction of all concerned.We wish him grand success in his professional endeavours.
+                  </p>
+                </div>
+
+              </div>
+            </li>
+
+           <!-- <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+                <figure class="testimonials-avatar-box">
+                  <img src="./images/avatar-4.png" alt="Sakthi" width="60" data-testimonials-avatar>
+                </figure>
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Sakthi</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Exceptional problem-solving skills and technical proficiency ensured the successful delivery of our complex web application on time and within budget.
+                  </p>
+                </div>
+
+              </div>
+            </li>-->
+
+          </ul>
+
+        </section>
+
+
+        <!--
+          - testimonials modal
+        -->
+
+       <div class="modal-container" data-modal-container>
+
+          <div class="overlay" data-overlay></div>
+
+          <section class="testimonials-modal">
+
+            <button class="modal-close-btn" data-modal-close-btn>
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
+
+            <div class="modal-img-wrapper">
+              <figure class="modal-avatar-box">
+                <img src="./images/avatar-1.png" alt="sathish kumar" width="80" data-modal-img>
+              </figure>
+
+              <img src="./images/icon-quote.svg" alt="quote icon">
+            </div>
+
+            <div class="modal-content">
+
+              <h4 class="h3 modal-title" data-modal-title>Sathish Kumar</h4>
+
+              <time datetime="2021-06-14">5 March, 2024</time>
+
+              <div data-modal-text>
+                <p>
+                  Lorem ipsum dolor sit amet, ullamcous cididt
+                  consectetur adipiscing
+                  elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
+                </p>
+              </div>
+
+            </div>
+
+          </section>
+
+        </div>
+
+        <!--
+          - clients
+        -->
+
+       <!-- <section class="clients">
+
+          <h3 class="h3 clients-title">Program Pen</h3>
+          <script>
+            function run() {
+               let html = document.getElementById('html-code');
+               let css = document.getElementById('css-code');
+               let js = document.getElementById('js-code');
+               let output = document.getElementById('output');
+           output.contentDocument.body.innerHTML=html.value+ "<style>" +css.value+"<style>";
+           output.contentWindow.eval(js.value);
+           }
+       </script>
+
+          <ul class="clients-list has-scrollbar">
+            
+    
+   
+    
+
+            <li class="clients-item">
+              <label id="codepen"><img id="codepen_icon" src="./images/icons-html.png" alt="html icon">   HTML</label>
+              <textarea id="html-code" onkeyup="run()" spellcheck="false" placeholder="Write your HTML code.."></textarea>
+            </li>
+
+            <li class="clients-item">
+              <label id="codepen"><img  id="codepen_icon" src="./images/icons-css.png" alt="css icon">   CSS</label>
+              <textarea id="css-code" onkeyup="run()"  spellcheck="false" placeholder="Write your CSS code.."></textarea>
+            </li>
+
+            <li class="clients-item">
+              <label id="codepen"><img  id="codepen_icon" src="./images/icons-js.png" alt="js icon">   JS</label>
+              <textarea id="js-code" onkeyup="run()"  spellcheck="false" placeholder="Write your JS code.."></textarea>
+            </li>
+
+            <li class="clients-item">
+              <label id="codepen">OUTPUT</label>
+              <iframe id="output" frameborder="0"></iframe>
+            </li>
+
+
+          </ul>
+
+        </section>-->
+
+      </article>
+
+   <!-- <article class="Intellyboi AI" data-page="Intellyboi AI">
+
+      <header>
+        <h2 class="h2 article-title">Intellyboi AI</h2>
+      </header>
+      <section class="assistant">
+        hello
+      </section>
+    </article>-->
+
+      <!--
+        - #RESUME
+      -->
+
+      <article class="resume" data-page="resume">
+
+        <header>
+          <h2 class="h2 article-title">Resume</h2>
+        </header>
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
+            </div>
+
+            <h3 class="h3">Education</h3>
+          </div>
+
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Madras Institute Of Technology, Anna University</h4>
+
+              <span>2022 — 2026</span>
+
+              <p class="timeline-text">
+                Bachelor of Engineering - B.E. Electronics & Instrumentation Engineering,<br>
+                Department of Instrumentation Engineering
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">DAV Boys Senior Secondary School (CBSE), Gopalapuram</h4>
+
+              <span>2020 — 2022</span>
+
+              <p class="timeline-text">
+               HSC-Central Board of Secondary Education(CBSE),<br>
+               Biology-Mathematics Group,<br>
+               Score: 483 / 500,<br>
+               Cutoff: 197 / 200
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Chinmaya Vidyalaya (CBSE), Virugambakkam</h4>
+
+              <span>2015 — 2020</span>
+
+              <p class="timeline-text">
+                From fifth to tenth grade, I diligently pursued academic excellence, cultivating a strong foundation for future success through dedicated learning and active engagement
+              </p>
+
+            </li>
+
+          </ol>
+
+        </section>
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
+            </div>
+
+            <h3 class="h3">Experience</h3>
+          </div>
+
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">National Institute of Ocean Technology, Pallikaranai</h4>
+
+              <span>Internship: February, 2023 - April, 2023</span>
+
+              <p class="timeline-text">
+                AI-Cloud Computing & Mobile app development for Remote Monitoring & Prediction of OC-OTEC parameters
+              </p>
+
+            </li>
+
+          </ol>
+
+        </section>
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
+            </div>
+
+            <h3 class="h3">Projects & Experience </h3>
+          </div>
+
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Balakamalam Environmental Project</h4>
+
+              <span>Funded Project - Rs. 1,25,000<br>February, 2024 - Present</span>
+
+              <p class="timeline-text">
+               
+              Personalised Fertilizer Recommendation System based on Soil health Estimation using AI driven Soft sensor and Hardware sensor
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">CSRC Project</h4>
+
+              <span>Funded Project - Rs. 25,000<br>July, 2023 - March, 2024<span>
+
+              <p class="timeline-text">
+                
+              AI based Embedded Siddha Diagnostic Tool For Body Composition Prediction Based on Wrist Circumference Measurement
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Application Development</h4>
+
+              <span>Ampton Energy<br>March, 2023 - February, 2024</span>
+
+              <p class="timeline-text">
+                
+              IoT based Remote Monitoring & Application Development for Battery Management System
+              </p>
+
+            </li>
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">AI-Cloud Computing  & Mobile App Development</h4>
+
+              <span>National Institute of Ocean Technology, Pallikaranai<br>February, 2024 - Present</span>
+
+              <p class="timeline-text">
+                An iOS & Android compatible Mobile Application was created using React Native for remote monitoring of Open Cycle Ocean Thermal Energy Conversion Plant parameters. Adding to that the Sea surface temperature, Turbine power output and Mass flow rate of fresh water in the outlet predicted using Long Short Term Memory and Artificial Neural Netwk respectively.
+              </p>
+
+            </li>
+
+          </ol>
+
+        </section>
+        <section class="testimonials">
+          <div class="title-wrapper" style="display: flex;">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
+            
+            </div>
+            <h3 class="h3" style="margin-left:1rem;">Awards, Participations & Certifications</h3>
+          </div>
+          <ul class="testimonials-list has-scrollbar">
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+                <figure class="testimonials-avatar-box" style="background-color: transparent;">
+                  <img src="./images/icons-umagine.png" alt="Umagine" width="60" data-testimonials-avatar>
+                </figure>
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Umagine TN - 2024</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Student Pitch :
+                    Our team delved deep into exploring sustainable solutions to enhance crop yield and farmer livelihoods.
+                  </p>
+                </div>
+
+              </div>
+            </li>
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+                <figure class="testimonials-avatar-box">
+                  <img src="./images/icons-web.jpg" alt="web development"  style="border-radius:2rem;" width="60" data-testimonials-avatar>
+                </figure>
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Full Stack Web Dev</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    HTML| CSS | Bootstrap | Javascript | jQuery | SQL | Python | DJango Framework |
+                  </p>
+                </div>
+
+              </div>
+            </li>
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+                <figure class="testimonials-avatar-box">
+                  <img src="./images/icon-cplus.png" alt="C programming" width="60" data-testimonials-avatar>
+                </figure>
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>C & C++ Programming</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Proficient in C and C++, adeptly crafting efficient solutions and robust applications, elevating code to a standard of excellence
+                  </p>
+                </div>
+
+              </div>
+            </li>
+          
+          </ul>
+
+        </section>
+
+
+        <section class="skill">
+
+          <h3 class="h3 skills-title">Technical skills</h3>
+
+          <ul class="skills-list content-card">
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Web design</h5>
+                <data value="90">90%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 90%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Mobile App design</h5>
+                <data value="70">70%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 70%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Machine Learning</h5>
+                <data value="90">90%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 90%;"></div>
+              </div>
+
+            </li>
+            
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Embedded Systems</h5>
+                <data value="90">90%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 90%;"></div>
+              </div>
+
+            </li>
+
+          </ul>
+
+        </section>
+        <section class="skill">
+
+          <h3 class="h3 skills-title">Professional skills</h3>
+
+          <ul class="skills-list content-card">
+
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Communication & Interactiveness</h5>
+                <data value="90">90%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 90%;"></div>
+              </div>
+
+            </li>
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Team Leadership & Management</h5>
+                <data value="90">90%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 90%;"></div>
+              </div>
+
+            </li>
+
+          </ul>
+
+        </section>
+        
+
+      </article>
+
+
+
+
+
+      <!--
+        - #PORTFOLIO
+      -->
+
+      <article class="portfolio" data-page="portfolio">
+
+        <header>
+          <h2 class="h2 article-title">Portfolio</h2>
+        </header>
+
+        <section class="projects">
+
+          <ul class="filter-list">
+
+            <li class="filter-item">
+              <button class="active" data-filter-btn>All</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>Games</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>Applications</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>Web development</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>Machine Learning</button>
+            </li>
+
+
+           
+
+          </ul>
+
+          <div class="filter-select-box">
+
+            <button class="filter-select" data-select>
+
+              <div class="select-value" data-selecct-value>Select category</div>
+
+              <div class="select-icon">
+                <ion-icon name="chevron-down"></ion-icon>
+              </div>
+
+            </button>
+
+            <ul class="select-list">
+
+              <li class="select-item">
+                <button data-select-item>All</button>
+              </li>
+              
+              <li class="select-item">
+                <button data-select-item>Games</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>Applications</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>Web development</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>Machine Learning</button>
+              </li>
+
+              
+
+            </ul>
+
+          </div>
+
+          <ul class="project-list">
+
+      
+
+
+            <li class="project-item  active" data-filter-item data-category="applications">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box"  onclick="sc()">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <script>
+                    function sc(){
+                      alert('For source code , Kindly fill the contact form');
+                    }
+                  </script>
+
+                  <img src="./images/project-4.jpeg" alt="OTEC Monitor" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">OTEC Monitor</h3>
+
+                <p class="project-category">Applications</p>
+
+              </a>
+            <script src="https://use.fontawesome.com/fe459689b4.js"></script>
+            <div class="button_row">
+            <div class="buttons">
+                <span id="likeBtn"><button class="btn" id="green"><i style="padding-right: 1rem;" class="fa fa-thumbs-up fa-lg" aria-hidden="true">
+                <div class="counts">
+                <span id="likeCount">0</span></div></i></button></span>
+            </div>
+            <div class="buttons">
+                <span id="dislikeBtn"><button class="btn" id="red"><i class="fa fa-thumbs-down fa-lg" aria-hidden="true"> 
+               <div class="counts">
+                <span id="dislikeCount">0</span> 
+              </div></i></button></span>
+            </div>
+            </div>
+            </li>
+
+
+            <li class="project-item  active" data-filter-item data-category="web development">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box" onclick="sc()">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <script>
+                    function sc(){
+                      alert('For source code , Kindly fill the contact form');
+                    }
+                  </script>
+                  <img src="./images/project-7.jpeg" alt="battery management system" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Battery Management System</h3>
+
+                <p class="project-category">Web development</p>
+
+              </a>
+              <script src="https://use.fontawesome.com/fe459689b4.js"></script>
+              <div class="button_row">
+              <div class="buttons">
+                  <span id="likeBtn1"><button class="btn" id="green"><i style="padding-right: 1rem;" class="fa fa-thumbs-up fa-lg" aria-hidden="true">
+                  <div class="counts1">
+                  <span id="likeCount1">0</span></div></i></button></span>
+              </div>
+              <div class="buttons">
+                  <span id="dislikeBtn1"><button class="btn" id="red"><i class="fa fa-thumbs-down fa-lg" aria-hidden="true"> 
+                 <div class="counts1">
+                  <span id="dislikeCount1">0</span> 
+                </div></i></button></span>
+              </div>
+              </div>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="machine learning">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box" onclick="sc()">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <script>
+                    function sc(){
+                      alert('For source code , Kindly fill the contact form');
+                    }
+                  </script>
+                  <img src="./images/project-8.jpg" alt="sea surface temperature forecast" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Sea Temperature Forecast</h3>
+
+                <p class="project-category">Machine Learning</p>
+
+              </a>
+              <script src="https://use.fontawesome.com/fe459689b4.js"></script>
+              <div class="button_row">
+              <div class="buttons">
+                  <span id="likeBtn2"><button class="btn" id="green"><i style="padding-right: 1rem;" class="fa fa-thumbs-up fa-lg" aria-hidden="true">
+                  <div class="counts2">
+                  <span id="likeCount2">0</span></div></i></button></span>
+              </div>
+              <div class="buttons">
+                  <span id="dislikeBtn2"><button class="btn" id="red"><i class="fa fa-thumbs-down fa-lg" aria-hidden="true"> 
+                 <div class="counts2">
+                  <span id="dislikeCount2">0</span> 
+                </div></i></button></span>
+              </div>
+              </div>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="web development">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box" onclick="sc()">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <script>
+                    function sc(){
+                      alert('For source code , Kindly fill the contact form');
+                    }
+                  </script>
+                  <img src="./images/project-9.jpeg" alt="sihand-t analyser" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">SIHAND-T Analyser</h3>
+
+                <p class="project-category">Web development</p>
+
+              </a>
+              <script src="https://use.fontawesome.com/fe459689b4.js"></script>
+              <div class="button_row">
+              <div class="buttons">
+                  <span id="likeBtn3"><button class="btn" id="green"><i style="padding-right: 1rem;" class="fa fa-thumbs-up fa-lg" aria-hidden="true">
+                  <div class="counts3">
+                  <span id="likeCount3">0</span></div></i></button></span>
+              </div>
+              <div class="buttons">
+                  <span id="dislikeBtn3"><button class="btn" id="red"><i class="fa fa-thumbs-down fa-lg" aria-hidden="true"> 
+                 <div class="counts3">
+                  <span id="dislikeCount3">0</span> 
+                </div></i></button></span>
+              </div>
+              </div>
+            </li>
+            <li class="project-item  active" data-filter-item data-category="games">
+              <a href="games/Snake_game/index.html" target="_blank">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box" onclick="sc()">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <script>
+                    function sc(){
+                      alert('For source code , Kindly fill the contact form');
+                    }
+                  </script>
+                  <img src="./images/project-11.png" alt="snake's brunch" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Snake's Brunch</h3>
+
+                <p class="project-category">Game</p>
+
+              </a>
+              <script src="https://use.fontawesome.com/fe459689b4.js"></script>
+              <div class="button_row">
+              <div class="buttons">
+                  <span id="likeBtn4"><button class="btn" id="green"><i style="padding-right: 1rem;" class="fa fa-thumbs-up fa-lg" aria-hidden="true">
+                  <div class="counts4">
+                  <span id="likeCount4">0</span></div></i></button></span>
+              </div>
+              <div class="buttons">
+                  <span id="dislikeBtn4"><button class="btn" id="red"><i class="fa fa-thumbs-down fa-lg" aria-hidden="true"> 
+                 <div class="counts4">
+                  <span id="dislikeCount4">0</span> 
+                </div></i></button></span>
+              </div>
+              </div>
+            </li>
+            <li class="project-item  active" data-filter-item data-category="games">
+              <a href="./games/hangman_game/index.html"  target="_blank">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box" onclick="sc()">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <script>
+                    function sc(){
+                      alert('For source code , Kindly fill the contact form');
+                    }
+                  </script>
+                  <img src="./images/project-10.png" alt="hangman" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Hangman</h3>
+
+                <p class="project-category">Game</p>
+
+              </a>
+              <script src="https://use.fontawesome.com/fe459689b4.js"></script>
+              <div class="button_row">
+              <div class="buttons">
+                  <span id="likeBtn5"><button class="btn" id="green"><i style="padding-right: 1rem;" class="fa fa-thumbs-up fa-lg" aria-hidden="true">
+                  <div class="counts5">
+                  <span id="likeCount5">0</span></div></i></button></span>
+              </div>
+              <div class="buttons">
+                  <span id="dislikeBtn5"><button class="btn" id="red"><i class="fa fa-thumbs-down fa-lg" aria-hidden="true"> 
+                 <div class="counts5">
+                  <span id="dislikeCount5">0</span> 
+                </div></i></button></span>
+              </div>
+              </div>
+            </li>
+            <li class="project-item  active" data-filter-item data-category="games">
+              <a href="games\Type_game\index.html"  target="_blank">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box" onclick="sc()">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <script>
+                    function sc(){
+                      alert('For source code , Kindly fill the contact form');
+                    }
+                  </script>
+                  <img src="./images/project-12.png" alt="death keys" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Death Keys</h3>
+
+                <p class="project-category">Game</p>
+
+              </a>
+              <script src="https://use.fontawesome.com/fe459689b4.js"></script>
+              <div class="button_row">
+              <div class="buttons">
+                  <span id="likeBtn6"><button class="btn" id="green"><i style="padding-right: 1rem;" class="fa fa-thumbs-up fa-lg" aria-hidden="true">
+                  <div class="counts6">
+                  <span id="likeCount6">0</span></div></i></button></span>
+              </div>
+              <div class="buttons">
+                  <span id="dislikeBtn6"><button class="btn" id="red"><i class="fa fa-thumbs-down fa-lg" aria-hidden="true"> 
+                 <div class="counts6">
+                  <span id="dislikeCount6">0</span> 
+                </div></i></button></span>
+              </div>
+              </div>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="games">
+              <a href="games\Word_game\index.html"  target="_blank">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box" onclick="sc()">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <script>
+                    function sc(){
+                      alert('For source code , Kindly fill the contact form');
+                    }
+                  </script>
+                  <img src="./images/project-13.png" alt="word o' maniac" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Word o' Maniac</h3>
+
+                <p class="project-category">Game</p>
+
+              </a>
+              <script src="https://use.fontawesome.com/fe459689b4.js"></script>
+              <div class="button_row">
+              <div class="buttons">
+                  <span id="likeBtn7"><button class="btn" id="green"><i style="padding-right: 1rem;" class="fa fa-thumbs-up fa-lg" aria-hidden="true">
+                  <div class="counts7">
+                  <span id="likeCount7">0</span></div></i></button></span>
+              </div>
+              <div class="buttons">
+                  <span id="dislikeBtn7"><button class="btn" id="red"><i class="fa fa-thumbs-down fa-lg" aria-hidden="true"> 
+                 <div class="counts7">
+                  <span id="dislikeCount7">0</span> 
+                </div></i></button></span>
+              </div>
+              </div>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+
+
+
+
+      <!--
+        - #BLOG
+      -->
+
+      <article class="blog" data-page="blog">
+
+        <header>
+          <h2 class="h2 article-title">Blog</h2>
+        </header>
+
+        <section class="blog-posts">
+
+          <ul class="blog-posts-list">
+
+            <!--<li class="blog-post-item">
+              <a href="#">
+
+                <figure class="blog-banner-box">
+                  <img src="./images/blog-1.jpg" alt="Design conferences in 2022" loading="lazy">
+                </figure>
+
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category">Machine Learning</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">Design conferences in 2022</h3>
+
+                  <p class="blog-text">
+                    Veritatis et quasi architecto beatae vitae dicta sunt, explicabo.
+                  </p>
+
+                </div>
+
+              </a>
+            </li>
+
+            <li class="blog-post-item">
+              <a href="#">
+
+                <figure class="blog-banner-box">
+                  <img src="./images/blog-2.jpg" alt="Best fonts every designer" loading="lazy">
+                </figure>
+
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category">Full Stack Web Development</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">Best fonts every designer</h3>
+
+                  <p class="blog-text">
+                    Sed ut perspiciatis, nam libero tempore, cum soluta nobis est eligendi.
+                  </p>
+
+                </div>
+
+              </a>
+            </li>
+
+            <li class="blog-post-item">
+              <a href="#">
+
+                <figure class="blog-banner-box">
+                  <img src="./images/blog-3.jpg" alt="Design digest #80" loading="lazy">
+                </figure>
+
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category">Embedded Systems</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">Design digest #80</h3>
+
+                  <p class="blog-text">
+                    Excepteur sint occaecat cupidatat no proident, quis nostrum exercitationem ullam corporis suscipit.
+                  </p>
+
+                </div>
+
+              </a>
+            </li>-->
+
+          </ul>
+
+        </section>
+
+      </article>
+
+
+
+
+
+      <!--
+        - #CONTACT
+      -->
+
+      <article class="contact" data-page="contact">
+
+        <header>
+          <h2 class="h2 article-title">Contact</h2>
+        </header>
+
+        <section class="mapbox" data-mapbox>
+          <figure>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.813531928331!2d80.20078207539267!3d13.047538187274863!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5267088280e359%3A0xe6e4afad101bbf09!2sCapella%20-%20Appaswamy%20Real%20Estates%20Ltd!5e0!3m2!1sen!2sin!4v1712508804731!5m2!1sen!2sin"
+              width="400" height="300" loading="lazy"></iframe>
+          </figure>
+        </section>
+
+        <section class="contact-form">
+
+          <h3 class="h3 form-title">Contact Form</h3>
+
+          <form action='#' class="form" data-form>
+
+            <div class="input-wrapper">
+              <input type="text" name="fullname" class="form-input" id="enterUsername" placeholder="Full name" >
+
+              <input type="email" name="email" class="form-input"  id="enterPassword"  placeholder="Email address" >
+            </div>
+
+            <textarea name="message" class="form-input" id="enterUID"  placeholder="Your Message"></textarea>
+
+            <button class="form-btn" type="submit" id="insert" data-form-btn>
+              <ion-icon name="paper-plane"></ion-icon>
+              <span>Send Message</span>
+            </button>
+
+          </form>
+
+        </section>
+      </article>
+     
+        <script type="module">
+           // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyA_eNtJpagGaoqDTof0RK--eDY-hG7lXIw",
+    authDomain: "intellyboi-bda57.firebaseapp.com",
+    databaseURL: "https://intellyboi-bda57-default-rtdb.firebaseio.com",
+    projectId: "intellyboi-bda57",
+    storageBucket: "intellyboi-bda57.appspot.com",
+    messagingSenderId: "795473648825",
+    appId: "1:795473648825:web:21eade8aa7f6a8b4d08f68",
+    measurementId: "G-RFP1BBZ6YQ"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+      import {getDatabase, ref, get, set, child, update, remove}
+         from "https://www.gstatic.com/firebasejs/10.11.0/firebase-database.js";
+          
+          
+  
+          const db = getDatabase();
+  
+          var enterUsername = document.querySelector("#enterUsername");
+          var enterPassword = document.querySelector("#enterPassword");
+          var enterUID = document.querySelector("#enterUID");
+          var findUsername = document.querySelector("#findUsername");
+          var findPassword = document.querySelector("#findPassword");
+          var findUID = document.querySelector("#findUID");
+        
+  
+          var insertBtn = document.querySelector("#insert");
+  
+          function InsertData() {
+              set(ref(db, "Register/"+ enterUID.value),{
+                  Username: enterUsername.value,
+                  Password: enterPassword.value,
+                  UID: enterUID.value
+              })
+              .then(()=>{
+                  alert("Message Sent Successfully");
+              })
+              .catch((error)=>{
+                  alert(error);
+              });
+          }
+  
+          function FindData() {
+              const dbref = ref(db);
+  
+              get(child(dbref, "Register/" + findUID.value))
+              .then((snapshot)=>{
+                  if(snapshot.exists()){
+                      findPassword.innerHTML = "Password: " + snapshot.val().Password;
+                      findUsername.innerHTML = "Username: " + snapshot.val().Username;
+                  } else {
+                      alert("No data found")
+                  }
+              })
+              .catch((error)=>{
+                  alert(error);
+              })
+              
+          }
+  
+          function UpdateData(){
+              update(ref(db, "Register/"+ enterUID.value),{
+                  Password: enterPassword.value,
+                  Username: enterUsername.value
+              })
+              .then(()=>{
+                  alert("Message Sent Successfully");
+              })
+              .catch((error)=>{
+                  alert(error);
+              });
+          }
+  
+          function RemoveData(){
+              remove(ref(db, "Register/"+ enterUID.value))
+              .then(()=>{
+                  alert("Data deleted successfully");
+              })
+              .catch((error)=>{
+                  alert(error);
+              });
+          }
+  
+          insertBtn.addEventListener('click', InsertData);
+          updateBtn.addEventListener('click', UpdateData);
+          removeBtn.addEventListener('click', RemoveData);
+          findBtn.addEventListener('click', FindData);
+  
+        </script>
+
+    </div>
+
+
+  </main>
+
+
+
+  <script>
+    window.embeddedChatbotConfig = {
+    chatbotId: "kcTjkSwB73nqTcAei_sJk",
+    domain: "www.chatbase.co"
+    }
+    </script>
+    <script
+    src="https://www.chatbase.co/embed.min.js"
+    chatbotId="kcTjkSwB73nqTcAei_sJk"
+    domain="www.chatbase.co"
+    defer>
+    </script>
+
+
+  <!--
+    - custom js link
+  -->
+
+
+  <!--
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script>
+    'use strict';
+
+
+
+// element toggle function
+const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
+
+
+
+// sidebar variables
+const sidebar = document.querySelector("[data-sidebar]");
+const sidebarBtn = document.querySelector("[data-sidebar-btn]");
+
+// sidebar toggle functionality for mobile
+sidebarBtn.addEventListener("click", function () { elementToggleFunc(sidebar); });
+
+
+
+// testimonials variables
+const testimonialsItem = document.querySelectorAll("[data-testimonials-item]");
+const modalContainer = document.querySelector("[data-modal-container]");
+const modalCloseBtn = document.querySelector("[data-modal-close-btn]");
+const overlay = document.querySelector("[data-overlay]");
+
+// modal variable
+const modalImg = document.querySelector("[data-modal-img]");
+const modalTitle = document.querySelector("[data-modal-title]");
+const modalText = document.querySelector("[data-modal-text]");
+
+// modal toggle function
+const testimonialsModalFunc = function () {
+  modalContainer.classList.toggle("active");
+  overlay.classList.toggle("active");
+}
+
+// add click event to all modal items
+for (let i = 0; i < testimonialsItem.length; i++) {
+
+  testimonialsItem[i].addEventListener("click", function () {
+
+    modalImg.src = this.querySelector("[data-testimonials-avatar]").src;
+    modalImg.alt = this.querySelector("[data-testimonials-avatar]").alt;
+    modalTitle.innerHTML = this.querySelector("[data-testimonials-title]").innerHTML;
+    modalText.innerHTML = this.querySelector("[data-testimonials-text]").innerHTML;
+
+    testimonialsModalFunc();
+
+  });
+
+}
+
+// add click event to modal close button
+modalCloseBtn.addEventListener("click", testimonialsModalFunc);
+overlay.addEventListener("click", testimonialsModalFunc);
+
+
+
+// custom select variables
+const select = document.querySelector("[data-select]");
+const selectItems = document.querySelectorAll("[data-select-item]");
+const selectValue = document.querySelector("[data-selecct-value]");
+const filterBtn = document.querySelectorAll("[data-filter-btn]");
+
+select.addEventListener("click", function () { elementToggleFunc(this); });
+
+// add event in all select items
+for (let i = 0; i < selectItems.length; i++) {
+  selectItems[i].addEventListener("click", function () {
+
+    let selectedValue = this.innerText.toLowerCase();
+    selectValue.innerText = this.innerText;
+    elementToggleFunc(select);
+    filterFunc(selectedValue);
+
+  });
+}
+
+// filter variables
+const filterItems = document.querySelectorAll("[data-filter-item]");
+
+const filterFunc = function (selectedValue) {
+
+  for (let i = 0; i < filterItems.length; i++) {
+
+    if (selectedValue === "all") {
+      filterItems[i].classList.add("active");
+    } else if (selectedValue === filterItems[i].dataset.category) {
+      filterItems[i].classList.add("active");
+    } else {
+      filterItems[i].classList.remove("active");
+    }
+
+  }
+
+}
+
+// add event in all filter button items for large screen
+let lastClickedBtn = filterBtn[0];
+
+for (let i = 0; i < filterBtn.length; i++) {
+
+  filterBtn[i].addEventListener("click", function () {
+
+    let selectedValue = this.innerText.toLowerCase();
+    selectValue.innerText = this.innerText;
+    filterFunc(selectedValue);
+
+    lastClickedBtn.classList.remove("active");
+    this.classList.add("active");
+    lastClickedBtn = this;
+
+  });
+
+}
+
+// page navigation variables
+const navigationLinks = document.querySelectorAll("[data-nav-link]");
+const pages = document.querySelectorAll("[data-page]");
+
+// add event to all nav link
+for (let i = 0; i < navigationLinks.length; i++) {
+  navigationLinks[i].addEventListener("click", function () {
+
+    for (let i = 0; i < pages.length; i++) {
+      if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
+        pages[i].classList.add("active");
+        navigationLinks[i].classList.add("active");
+        window.scrollTo(0, 0);
+      } else {
+        pages[i].classList.remove("active");
+        navigationLinks[i].classList.remove("active");
+      }
+    }
+
+  });
+}
+var btn1 = document.querySelector('#green');
+var btn2 = document.querySelector('#red');
+
+btn1.addEventListener('click', function() {
+  
+    if (btn2.classList.contains('red')) {
+      btn2.classList.remove('red');
+    } 
+  this.classList.toggle('green');
+  
+});
+
+btn2.addEventListener('click', function() {
+  
+    if (btn1.classList.contains('green')) {
+      btn1.classList.remove('green');
+    } 
+  this.classList.toggle('red');
+  
+});
+document.addEventListener("DOMContentLoaded", function() {
+    // Initialize like and dislike counts from localStorage or set to 0 if not exists
+    let likeCount = parseInt(localStorage.getItem('likeCount')) || 0;
+    let dislikeCount = parseInt(localStorage.getItem('dislikeCount')) || 0;
+  
+    // Update counts on the webpage
+    document.getElementById('likeCount').textContent = likeCount;
+    document.getElementById('dislikeCount').textContent = dislikeCount;
+  
+    // Add event listeners to like and dislike buttons
+    document.getElementById('likeBtn').addEventListener('click', function() {
+      likeCount++;
+      document.getElementById('likeCount').textContent = likeCount;
+      localStorage.setItem('likeCount', likeCount);
+    });
+  
+    document.getElementById('dislikeBtn').addEventListener('click', function() {
+      dislikeCount++;
+      document.getElementById('dislikeCount').textContent = dislikeCount;
+      localStorage.setItem('dislikeCount', dislikeCount);
+    });
+  });
+  document.addEventListener("DOMContentLoaded", function() {
+    // Initialize like and dislike counts from localStorage or set to 0 if not exists
+    let likeCount = parseInt(localStorage.getItem('likeCount1')) || 0;
+    let dislikeCount = parseInt(localStorage.getItem('dislikeCount1')) || 0;
+  
+    // Update counts on the webpage
+    document.getElementById('likeCount1').textContent = likeCount;
+    document.getElementById('dislikeCount1').textContent = dislikeCount;
+  
+    // Add event listeners to like and dislike buttons
+    document.getElementById('likeBtn1').addEventListener('click', function() {
+      likeCount++;
+      document.getElementById('likeCount1').textContent = likeCount;
+      localStorage.setItem('likeCount1', likeCount);
+    });
+  
+    document.getElementById('dislikeBtn1').addEventListener('click', function() {
+      dislikeCount++;
+      document.getElementById('dislikeCount1').textContent = dislikeCount;
+      localStorage.setItem('dislikeCount1', dislikeCount);
+    });
+  });
+  document.addEventListener("DOMContentLoaded", function() {
+    // Initialize like and dislike counts from localStorage or set to 0 if not exists
+    let likeCount = parseInt(localStorage.getItem('likeCount2')) || 0;
+    let dislikeCount = parseInt(localStorage.getItem('dislikeCount2')) || 0;
+  
+    // Update counts on the webpage
+    document.getElementById('likeCount2').textContent = likeCount;
+    document.getElementById('dislikeCount2').textContent = dislikeCount;
+  
+    // Add event listeners to like and dislike buttons
+    document.getElementById('likeBtn2').addEventListener('click', function() {
+      likeCount++;
+      document.getElementById('likeCount2').textContent = likeCount;
+      localStorage.setItem('likeCount2', likeCount);
+    });
+  
+    document.getElementById('dislikeBtn2').addEventListener('click', function() {
+      dislikeCount++;
+      document.getElementById('dislikeCount2').textContent = dislikeCount;
+      localStorage.setItem('dislikeCount2', dislikeCount);
+    });
+  });
+  document.addEventListener("DOMContentLoaded", function() {
+    // Initialize like and dislike counts from localStorage or set to 0 if not exists
+    let likeCount = parseInt(localStorage.getItem('likeCount3')) || 0;
+    let dislikeCount = parseInt(localStorage.getItem('dislikeCount3')) || 0;
+  
+    // Update counts on the webpage
+    document.getElementById('likeCount3').textContent = likeCount;
+    document.getElementById('dislikeCount3').textContent = dislikeCount;
+  
+    // Add event listeners to like and dislike buttons
+    document.getElementById('likeBtn3').addEventListener('click', function() {
+      likeCount++;
+      document.getElementById('likeCount3').textContent = likeCount;
+      localStorage.setItem('likeCount3', likeCount);
+    });
+  
+    document.getElementById('dislikeBtn3').addEventListener('click', function() {
+      dislikeCount++;
+      document.getElementById('dislikeCount3').textContent = dislikeCount;
+      localStorage.setItem('dislikeCount3', dislikeCount);
+    });
+  });
+  document.addEventListener("DOMContentLoaded", function() {
+    // Initialize like and dislike counts from localStorage or set to 0 if not exists
+    let likeCount = parseInt(localStorage.getItem('likeCount4')) || 0;
+    let dislikeCount = parseInt(localStorage.getItem('dislikeCount4')) || 0;
+  
+    // Update counts on the webpage
+    document.getElementById('likeCount4').textContent = likeCount;
+    document.getElementById('dislikeCount4').textContent = dislikeCount;
+  
+    // Add event listeners to like and dislike buttons
+    document.getElementById('likeBtn4').addEventListener('click', function() {
+      likeCount++;
+      document.getElementById('likeCount4').textContent = likeCount;
+      localStorage.setItem('likeCount4', likeCount);
+    });
+  
+    document.getElementById('dislikeBtn4').addEventListener('click', function() {
+      dislikeCount++;
+      document.getElementById('dislikeCount4').textContent = dislikeCount;
+      localStorage.setItem('dislikeCount4', dislikeCount);
+    });
+  });
+  document.addEventListener("DOMContentLoaded", function() {
+    // Initialize like and dislike counts from localStorage or set to 0 if not exists
+    let likeCount = parseInt(localStorage.getItem('likeCount5')) || 0;
+    let dislikeCount = parseInt(localStorage.getItem('dislikeCount5')) || 0;
+  
+    // Update counts on the webpage
+    document.getElementById('likeCount5').textContent = likeCount;
+    document.getElementById('dislikeCount5').textContent = dislikeCount;
+  
+    // Add event listeners to like and dislike buttons
+    document.getElementById('likeBtn5').addEventListener('click', function() {
+      likeCount++;
+      document.getElementById('likeCount5').textContent = likeCount;
+      localStorage.setItem('likeCount5', likeCount);
+    });
+  
+    document.getElementById('dislikeBtn5').addEventListener('click', function() {
+      dislikeCount++;
+      document.getElementById('dislikeCount5').textContent = dislikeCount;
+      localStorage.setItem('dislikeCount5', dislikeCount);
+    });
+  });
+  document.addEventListener("DOMContentLoaded", function() {
+    // Initialize like and dislike counts from localStorage or set to 0 if not exists
+    let likeCount = parseInt(localStorage.getItem('likeCount6')) || 0;
+    let dislikeCount = parseInt(localStorage.getItem('dislikeCount6')) || 0;
+  
+    // Update counts on the webpage
+    document.getElementById('likeCount6').textContent = likeCount;
+    document.getElementById('dislikeCount6').textContent = dislikeCount;
+  
+    // Add event listeners to like and dislike buttons
+    document.getElementById('likeBtn6').addEventListener('click', function() {
+      likeCount++;
+      document.getElementById('likeCount6').textContent = likeCount;
+      localStorage.setItem('likeCount6', likeCount);
+    });
+  
+    document.getElementById('dislikeBtn6').addEventListener('click', function() {
+      dislikeCount++;
+      document.getElementById('dislikeCount6').textContent = dislikeCount;
+      localStorage.setItem('dislikeCount6', dislikeCount);
+    });
+  });
+  document.addEventListener("DOMContentLoaded", function() {
+    // Initialize like and dislike counts from localStorage or set to 0 if not exists
+    let likeCount = parseInt(localStorage.getItem('likeCount7')) || 0;
+    let dislikeCount = parseInt(localStorage.getItem('dislikeCount7')) || 0;
+  
+    // Update counts on the webpage
+    document.getElementById('likeCount7').textContent = likeCount;
+    document.getElementById('dislikeCount7').textContent = dislikeCount;
+  
+    // Add event listeners to like and dislike buttons
+    document.getElementById('likeBtn7').addEventListener('click', function() {
+      likeCount++;
+      document.getElementById('likeCount7').textContent = likeCount;
+      localStorage.setItem('likeCount7', likeCount);
+    });
+  
+    document.getElementById('dislikeBtn7').addEventListener('click', function() {
+      dislikeCount++;
+      document.getElementById('dislikeCount7').textContent = dislikeCount;
+      localStorage.setItem('dislikeCount7', dislikeCount);
+    });
+  });
+  //localStorage.clear();
+
+</script>
+</body>
+
+</html>
