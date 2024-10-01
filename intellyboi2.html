@@ -2,13 +2,11 @@
 <html lang="en">
 
 <head>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4360463441190392"
-     crossorigin="anonymous"></script>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="icon" href="images/circuit-board.png"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Intellyboi</title>
-  <link rel="icon" href="images/circuit-board.png"/>
 
   <!--
     - favicon
@@ -1927,15 +1925,6 @@ main {
   padding-right:10%;
 
 }
-.button_row{
-  display:flex;
-  flex-direction: row;
-  margin-left: 75%;
-}
-
-.btn:focus {
-  outline: none;
-}
 
   </style>
 </head>
@@ -1989,7 +1978,7 @@ main {
             <div class="contact-info">
               <p class="contact-title">Email</p>
 
-              <a href="mailto:ashumarvel04@gmail.com" class="contact-link">ashumarvel04@gmail.com</a>
+              <a href="mailto:ashwanthsathishkumar2604@gmail.com" class="contact-link">ashwanthsathishkumar2604@gmail.com</a>
             </div>
 
           </li>
@@ -2107,7 +2096,7 @@ main {
           <li class="navbar-item">
             <button class="navbar-link" data-nav-link>Contact</button>
           </li>
-         
+
         </ul>
 
       </nav>
@@ -2494,6 +2483,14 @@ main {
 
             <li class="timeline-item">
 
+              <h4 class="h4 timeline-item-title">Neyveli Lignite Corporation, India</h4>
+
+              <span>Internship: June, 2024 - July, 2024</span>
+
+            </li>
+
+            <li class="timeline-item">
+
               <h4 class="h4 timeline-item-title">National Institute of Ocean Technology, Pallikaranai</h4>
 
               <span>Internship: February, 2023 - April, 2023</span>
@@ -2581,7 +2578,40 @@ main {
             <h3 class="h3" style="margin-left:1rem;">Awards, Participations & Certifications</h3>
           </div>
           <ul class="testimonials-list has-scrollbar">
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
 
+                <figure class="testimonials-avatar-box">
+                  <img src="./images/icons-isa.jpg" alt="IAG 2024" style="border-radius:2rem;" width="60" data-testimonials-avatar>
+                </figure>
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>India Automation Games</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Secured 3rd place (Bronze) with a cash award of Rs. 5000 and qualified for the World Automation Games 2025 in Alberta, Calgary, Canada.
+                  </p>
+                </div>
+
+              </div>
+            </li>
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+                <figure class="testimonials-avatar-box">
+                  <img src="./images/icons-mst.jpg" alt="ANN" style="border-radius:2rem;" width="60" data-testimonials-avatar>
+                </figure>
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Artificial Neural Networks</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Acquired deep conceptual understanding of various Deep Learning Techniques with Hands on experience.
+                  </p>
+                </div>
+
+              </div>
+            </li>
             <li class="testimonials-item">
               <div class="content-card" data-testimonials-item>
 
@@ -2849,8 +2879,6 @@ main {
                 <p class="project-category">Applications</p>
 
               </a>
-           
-           
             </li>
 
 
@@ -2874,8 +2902,6 @@ main {
                 <p class="project-category">Web development</p>
 
               </a>
-  
-             
             </li>
 
             <li class="project-item  active" data-filter-item data-category="machine learning">
@@ -2898,7 +2924,6 @@ main {
                 <p class="project-category">Machine Learning</p>
 
               </a>
-             
             </li>
 
             <li class="project-item  active" data-filter-item data-category="web development">
@@ -2921,7 +2946,7 @@ main {
                 <p class="project-category">Web development</p>
 
               </a>
-              
+          
             </li>
             <li class="project-item  active" data-filter-item data-category="games">
               <a href="games/Snake_game/index.html" target="_blank">
@@ -2942,7 +2967,8 @@ main {
 
                 <p class="project-category">Game</p>
 
-              </a>             
+              </a>
+
             </li>
             <li class="project-item  active" data-filter-item data-category="games">
               <a href="./games/hangman_game/index.html"  target="_blank">
@@ -2964,7 +2990,7 @@ main {
                 <p class="project-category">Game</p>
 
               </a>
-              
+             
             </li>
             <li class="project-item  active" data-filter-item data-category="games">
               <a href="games\Type_game\index.html"  target="_blank">
@@ -2986,7 +3012,7 @@ main {
                 <p class="project-category">Game</p>
 
               </a>
-             
+            
             </li>
 
             <li class="project-item  active" data-filter-item data-category="games">
@@ -3009,7 +3035,9 @@ main {
                 <p class="project-category">Game</p>
 
               </a>
-              </li>
+              
+            </li>
+
           </ul>
 
         </section>
@@ -3440,6 +3468,204 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+var btn1 = document.querySelector('#green');
+var btn2 = document.querySelector('#red');
+
+btn1.addEventListener('click', function() {
+  
+    if (btn2.classList.contains('red')) {
+      btn2.classList.remove('red');
+    } 
+  this.classList.toggle('green');
+  
+});
+
+btn2.addEventListener('click', function() {
+  
+    if (btn1.classList.contains('green')) {
+      btn1.classList.remove('green');
+    } 
+  this.classList.toggle('red');
+  
+});
+document.addEventListener("DOMContentLoaded", function() {
+    // Initialize like and dislike counts from localStorage or set to 0 if not exists
+    let likeCount = parseInt(localStorage.getItem('likeCount')) || 0;
+    let dislikeCount = parseInt(localStorage.getItem('dislikeCount')) || 0;
+  
+    // Update counts on the webpage
+    document.getElementById('likeCount').textContent = likeCount;
+    document.getElementById('dislikeCount').textContent = dislikeCount;
+  
+    // Add event listeners to like and dislike buttons
+    document.getElementById('likeBtn').addEventListener('click', function() {
+      likeCount++;
+      document.getElementById('likeCount').textContent = likeCount;
+      localStorage.setItem('likeCount', likeCount);
+    });
+  
+    document.getElementById('dislikeBtn').addEventListener('click', function() {
+      dislikeCount++;
+      document.getElementById('dislikeCount').textContent = dislikeCount;
+      localStorage.setItem('dislikeCount', dislikeCount);
+    });
+  });
+  document.addEventListener("DOMContentLoaded", function() {
+    // Initialize like and dislike counts from localStorage or set to 0 if not exists
+    let likeCount = parseInt(localStorage.getItem('likeCount1')) || 0;
+    let dislikeCount = parseInt(localStorage.getItem('dislikeCount1')) || 0;
+  
+    // Update counts on the webpage
+    document.getElementById('likeCount1').textContent = likeCount;
+    document.getElementById('dislikeCount1').textContent = dislikeCount;
+  
+    // Add event listeners to like and dislike buttons
+    document.getElementById('likeBtn1').addEventListener('click', function() {
+      likeCount++;
+      document.getElementById('likeCount1').textContent = likeCount;
+      localStorage.setItem('likeCount1', likeCount);
+    });
+  
+    document.getElementById('dislikeBtn1').addEventListener('click', function() {
+      dislikeCount++;
+      document.getElementById('dislikeCount1').textContent = dislikeCount;
+      localStorage.setItem('dislikeCount1', dislikeCount);
+    });
+  });
+  document.addEventListener("DOMContentLoaded", function() {
+    // Initialize like and dislike counts from localStorage or set to 0 if not exists
+    let likeCount = parseInt(localStorage.getItem('likeCount2')) || 0;
+    let dislikeCount = parseInt(localStorage.getItem('dislikeCount2')) || 0;
+  
+    // Update counts on the webpage
+    document.getElementById('likeCount2').textContent = likeCount;
+    document.getElementById('dislikeCount2').textContent = dislikeCount;
+  
+    // Add event listeners to like and dislike buttons
+    document.getElementById('likeBtn2').addEventListener('click', function() {
+      likeCount++;
+      document.getElementById('likeCount2').textContent = likeCount;
+      localStorage.setItem('likeCount2', likeCount);
+    });
+  
+    document.getElementById('dislikeBtn2').addEventListener('click', function() {
+      dislikeCount++;
+      document.getElementById('dislikeCount2').textContent = dislikeCount;
+      localStorage.setItem('dislikeCount2', dislikeCount);
+    });
+  });
+  document.addEventListener("DOMContentLoaded", function() {
+    // Initialize like and dislike counts from localStorage or set to 0 if not exists
+    let likeCount = parseInt(localStorage.getItem('likeCount3')) || 0;
+    let dislikeCount = parseInt(localStorage.getItem('dislikeCount3')) || 0;
+  
+    // Update counts on the webpage
+    document.getElementById('likeCount3').textContent = likeCount;
+    document.getElementById('dislikeCount3').textContent = dislikeCount;
+  
+    // Add event listeners to like and dislike buttons
+    document.getElementById('likeBtn3').addEventListener('click', function() {
+      likeCount++;
+      document.getElementById('likeCount3').textContent = likeCount;
+      localStorage.setItem('likeCount3', likeCount);
+    });
+  
+    document.getElementById('dislikeBtn3').addEventListener('click', function() {
+      dislikeCount++;
+      document.getElementById('dislikeCount3').textContent = dislikeCount;
+      localStorage.setItem('dislikeCount3', dislikeCount);
+    });
+  });
+  document.addEventListener("DOMContentLoaded", function() {
+    // Initialize like and dislike counts from localStorage or set to 0 if not exists
+    let likeCount = parseInt(localStorage.getItem('likeCount4')) || 0;
+    let dislikeCount = parseInt(localStorage.getItem('dislikeCount4')) || 0;
+  
+    // Update counts on the webpage
+    document.getElementById('likeCount4').textContent = likeCount;
+    document.getElementById('dislikeCount4').textContent = dislikeCount;
+  
+    // Add event listeners to like and dislike buttons
+    document.getElementById('likeBtn4').addEventListener('click', function() {
+      likeCount++;
+      document.getElementById('likeCount4').textContent = likeCount;
+      localStorage.setItem('likeCount4', likeCount);
+    });
+  
+    document.getElementById('dislikeBtn4').addEventListener('click', function() {
+      dislikeCount++;
+      document.getElementById('dislikeCount4').textContent = dislikeCount;
+      localStorage.setItem('dislikeCount4', dislikeCount);
+    });
+  });
+  document.addEventListener("DOMContentLoaded", function() {
+    // Initialize like and dislike counts from localStorage or set to 0 if not exists
+    let likeCount = parseInt(localStorage.getItem('likeCount5')) || 0;
+    let dislikeCount = parseInt(localStorage.getItem('dislikeCount5')) || 0;
+  
+    // Update counts on the webpage
+    document.getElementById('likeCount5').textContent = likeCount;
+    document.getElementById('dislikeCount5').textContent = dislikeCount;
+  
+    // Add event listeners to like and dislike buttons
+    document.getElementById('likeBtn5').addEventListener('click', function() {
+      likeCount++;
+      document.getElementById('likeCount5').textContent = likeCount;
+      localStorage.setItem('likeCount5', likeCount);
+    });
+  
+    document.getElementById('dislikeBtn5').addEventListener('click', function() {
+      dislikeCount++;
+      document.getElementById('dislikeCount5').textContent = dislikeCount;
+      localStorage.setItem('dislikeCount5', dislikeCount);
+    });
+  });
+  document.addEventListener("DOMContentLoaded", function() {
+    // Initialize like and dislike counts from localStorage or set to 0 if not exists
+    let likeCount = parseInt(localStorage.getItem('likeCount6')) || 0;
+    let dislikeCount = parseInt(localStorage.getItem('dislikeCount6')) || 0;
+  
+    // Update counts on the webpage
+    document.getElementById('likeCount6').textContent = likeCount;
+    document.getElementById('dislikeCount6').textContent = dislikeCount;
+  
+    // Add event listeners to like and dislike buttons
+    document.getElementById('likeBtn6').addEventListener('click', function() {
+      likeCount++;
+      document.getElementById('likeCount6').textContent = likeCount;
+      localStorage.setItem('likeCount6', likeCount);
+    });
+  
+    document.getElementById('dislikeBtn6').addEventListener('click', function() {
+      dislikeCount++;
+      document.getElementById('dislikeCount6').textContent = dislikeCount;
+      localStorage.setItem('dislikeCount6', dislikeCount);
+    });
+  });
+  document.addEventListener("DOMContentLoaded", function() {
+    // Initialize like and dislike counts from localStorage or set to 0 if not exists
+    let likeCount = parseInt(localStorage.getItem('likeCount7')) || 0;
+    let dislikeCount = parseInt(localStorage.getItem('dislikeCount7')) || 0;
+  
+    // Update counts on the webpage
+    document.getElementById('likeCount7').textContent = likeCount;
+    document.getElementById('dislikeCount7').textContent = dislikeCount;
+  
+    // Add event listeners to like and dislike buttons
+    document.getElementById('likeBtn7').addEventListener('click', function() {
+      likeCount++;
+      document.getElementById('likeCount7').textContent = likeCount;
+      localStorage.setItem('likeCount7', likeCount);
+    });
+  
+    document.getElementById('dislikeBtn7').addEventListener('click', function() {
+      dislikeCount++;
+      document.getElementById('dislikeCount7').textContent = dislikeCount;
+      localStorage.setItem('dislikeCount7', dislikeCount);
+    });
+  });
+  //localStorage.clear();
+
 </script>
 </body>
 
